@@ -1,0 +1,18 @@
+{
+    "ruleSet": {
+      "domainRules": [
+        {
+          "name": "products-valueValidator",
+          "kind": "CONDITION",
+          "type": "CEL",
+          "mode": "WRITE",
+          "expr": "message.sale_price >= 5000",
+          "onFailure": "DLQ",
+          "params": {
+            "dlq.topic": "bad_data"
+            },
+          "disabled": false
+        }
+      ]
+    }
+  }
